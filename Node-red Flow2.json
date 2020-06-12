@@ -1,0 +1,508 @@
+[
+    {
+        "id": "e3c8ba97.2e6588",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "51bbf5ce.4556ac",
+        "type": "http request",
+        "z": "e3c8ba97.2e6588",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "api.openweathermap.org/data/2.5/weather?q=Anantapur, IN&appid=ade894d770e636f52ec0093eb8e4b35a",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 370,
+        "y": 320,
+        "wires": [
+            [
+                "b21afcca.73545",
+                "8aa55c0a.21707",
+                "1e258622.7a0faa",
+                "8871e133.2a742",
+                "e1615879.c7e0b8",
+                "f7009acf.219c98",
+                "8ccaec2e.4f24c",
+                "a13a1602.285f68",
+                "2827d4b1.2d14dc",
+                "2284cde8.3543c2"
+            ]
+        ]
+    },
+    {
+        "id": "1b4ed626.48905a",
+        "type": "inject",
+        "z": "e3c8ba97.2e6588",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "x": 110,
+        "y": 360,
+        "wires": [
+            [
+                "51bbf5ce.4556ac"
+            ]
+        ]
+    },
+    {
+        "id": "b21afcca.73545",
+        "type": "debug",
+        "z": "e3c8ba97.2e6588",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b7db5fa6.fbb49",
+        "type": "catch",
+        "z": "e3c8ba97.2e6588",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 740,
+        "y": 440,
+        "wires": [
+            [
+                "b21afcca.73545"
+            ]
+        ]
+    },
+    {
+        "id": "8aa55c0a.21707",
+        "type": "function",
+        "z": "e3c8ba97.2e6588",
+        "name": "pressure",
+        "func": "msg.payload=msg.payload.main.pressure;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 60,
+        "wires": [
+            [
+                "9c2e9204.c9881"
+            ]
+        ]
+    },
+    {
+        "id": "9c2e9204.c9881",
+        "type": "ui_text",
+        "z": "e3c8ba97.2e6588",
+        "group": "c71a6b38.30d218",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "pressure",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 720,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "1e258622.7a0faa",
+        "type": "function",
+        "z": "e3c8ba97.2e6588",
+        "name": "Temperature",
+        "func": "msg.payload=msg.payload.main.temp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 140,
+        "wires": [
+            [
+                "1697b69d.7af0b9",
+                "1e191b66.427e25"
+            ]
+        ]
+    },
+    {
+        "id": "1697b69d.7af0b9",
+        "type": "ui_text",
+        "z": "e3c8ba97.2e6588",
+        "group": "c71a6b38.30d218",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Temperature",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 750,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "8871e133.2a742",
+        "type": "function",
+        "z": "e3c8ba97.2e6588",
+        "name": "Wind speed",
+        "func": "msg.payload=msg.payload.wind.speed;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 590,
+        "y": 220,
+        "wires": [
+            [
+                "50d17d56.7892e4",
+                "7105e038.0b6ff"
+            ]
+        ]
+    },
+    {
+        "id": "50d17d56.7892e4",
+        "type": "ui_text",
+        "z": "e3c8ba97.2e6588",
+        "group": "c71a6b38.30d218",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Wind Speed",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 770,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "e1615879.c7e0b8",
+        "type": "function",
+        "z": "e3c8ba97.2e6588",
+        "name": "Region",
+        "func": "msg.payload=msg.payload.name;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 600,
+        "y": 280,
+        "wires": [
+            [
+                "55614838.ee3c78"
+            ]
+        ]
+    },
+    {
+        "id": "55614838.ee3c78",
+        "type": "ui_text",
+        "z": "e3c8ba97.2e6588",
+        "group": "c71a6b38.30d218",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "region",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 770,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f7009acf.219c98",
+        "type": "function",
+        "z": "e3c8ba97.2e6588",
+        "name": "sea level",
+        "func": "msg.payload=msg.payload.main.sea_level;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 560,
+        "y": 400,
+        "wires": [
+            [
+                "fdad3638.9e1608"
+            ]
+        ]
+    },
+    {
+        "id": "fdad3638.9e1608",
+        "type": "ui_text",
+        "z": "e3c8ba97.2e6588",
+        "group": "c71a6b38.30d218",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "sea level",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 650,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "2827d4b1.2d14dc",
+        "type": "function",
+        "z": "e3c8ba97.2e6588",
+        "name": "weather base",
+        "func": "msg.payload=msg.payload.base;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 200,
+        "wires": [
+            [
+                "72c3cfdb.62f45"
+            ]
+        ]
+    },
+    {
+        "id": "72c3cfdb.62f45",
+        "type": "ui_text",
+        "z": "e3c8ba97.2e6588",
+        "group": "c71a6b38.30d218",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "weather base",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 380,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "8ccaec2e.4f24c",
+        "type": "function",
+        "z": "e3c8ba97.2e6588",
+        "name": "country",
+        "func": "msg.payload=msg.payload.sys.country;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "113a654.c7a209b"
+            ]
+        ]
+    },
+    {
+        "id": "113a654.c7a209b",
+        "type": "ui_text",
+        "z": "e3c8ba97.2e6588",
+        "group": "c71a6b38.30d218",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "country",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 460,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "9e9a1709.3d5f28",
+        "type": "ui_text",
+        "z": "e3c8ba97.2e6588",
+        "group": "c71a6b38.30d218",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Latitude",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 240,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "a13a1602.285f68",
+        "type": "function",
+        "z": "e3c8ba97.2e6588",
+        "name": "Latitude",
+        "func": "msg.payload=msg.payload.coord.lat;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 220,
+        "y": 440,
+        "wires": [
+            [
+                "9e9a1709.3d5f28"
+            ]
+        ]
+    },
+    {
+        "id": "2284cde8.3543c2",
+        "type": "function",
+        "z": "e3c8ba97.2e6588",
+        "name": "longitude",
+        "func": "msg.payload=msg.payload.coord.lon;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "ac82c088.2a57d"
+            ]
+        ]
+    },
+    {
+        "id": "ac82c088.2a57d",
+        "type": "ui_text",
+        "z": "e3c8ba97.2e6588",
+        "group": "c71a6b38.30d218",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Longitude",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 160,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "1e191b66.427e25",
+        "type": "ui_chart",
+        "z": "e3c8ba97.2e6588",
+        "name": "",
+        "group": "21921d34.48caf2",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0100",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#e12323",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 760,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7105e038.0b6ff",
+        "type": "ui_chart",
+        "z": "e3c8ba97.2e6588",
+        "name": "",
+        "group": "c2e4d9a.fc67928",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "10",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#15a215",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 770,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c71a6b38.30d218",
+        "type": "ui_group",
+        "z": "",
+        "name": "Weather forecast",
+        "tab": "bdcaac0b.cbca",
+        "order": 3,
+        "disp": true,
+        "width": "5",
+        "collapse": false
+    },
+    {
+        "id": "21921d34.48caf2",
+        "type": "ui_group",
+        "z": "",
+        "name": "weather forecast-temp line chart",
+        "tab": "bdcaac0b.cbca",
+        "order": 8,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c2e4d9a.fc67928",
+        "type": "ui_group",
+        "z": "",
+        "name": "weather forecast-wind speed",
+        "tab": "bdcaac0b.cbca",
+        "order": 9,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "bdcaac0b.cbca",
+        "type": "ui_tab",
+        "z": "",
+        "name": "IOT",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]

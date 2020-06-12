@@ -1,0 +1,370 @@
+[
+    {
+        "id": "fc2f145.e9c1de8",
+        "type": "tab",
+        "label": "IOTnode-UI",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d03a899a.a7c528",
+        "type": "ibmiot in",
+        "z": "fc2f145.e9c1de8",
+        "authentication": "apiKey",
+        "apiKey": "f0632a6.531ecd8",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "ARDUINO",
+        "applicationId": "",
+        "deviceType": "IOT-device",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": false,
+        "allApplications": "",
+        "allDeviceTypes": false,
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 90,
+        "y": 380,
+        "wires": [
+            [
+                "49ee1dc3.84f254",
+                "8c201ddf.b2d93",
+                "e5cb9c98.faf3b"
+            ]
+        ]
+    },
+    {
+        "id": "4eff064e.d4af98",
+        "type": "debug",
+        "z": "fc2f145.e9c1de8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 850,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "49ee1dc3.84f254",
+        "type": "function",
+        "z": "fc2f145.e9c1de8",
+        "name": "temperature",
+        "func": "msg.payload=msg.payload.d.temperature;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 410,
+        "y": 220,
+        "wires": [
+            [
+                "4eff064e.d4af98",
+                "809e052.06dd3f8"
+            ]
+        ]
+    },
+    {
+        "id": "8c201ddf.b2d93",
+        "type": "function",
+        "z": "fc2f145.e9c1de8",
+        "name": "humidity",
+        "func": "msg.payload=msg.payload.d.humidity;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 400,
+        "y": 80,
+        "wires": [
+            [
+                "4eff064e.d4af98",
+                "c66bb41a.dabc28"
+            ]
+        ]
+    },
+    {
+        "id": "e5cb9c98.faf3b",
+        "type": "function",
+        "z": "fc2f145.e9c1de8",
+        "name": "Objtemp",
+        "func": "msg.payload=msg.payload.d.objectTemp;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "4eff064e.d4af98",
+                "7e247761.0e63d8"
+            ]
+        ]
+    },
+    {
+        "id": "9e77a58f.589848",
+        "type": "catch",
+        "z": "fc2f145.e9c1de8",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 840,
+        "y": 480,
+        "wires": [
+            [
+                "4eff064e.d4af98"
+            ]
+        ]
+    },
+    {
+        "id": "809e052.06dd3f8",
+        "type": "ui_gauge",
+        "z": "fc2f145.e9c1de8",
+        "name": "",
+        "group": "24578341.e00e5c",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "temperature-guage",
+        "label": "Degrees (centigrade)",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#038703",
+            "#f0f019",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 710,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "c66bb41a.dabc28",
+        "type": "ui_gauge",
+        "z": "fc2f145.e9c1de8",
+        "name": "",
+        "group": "7ba5a8a0.c65008",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity-guage",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#cdcd04",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 640,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "7e247761.0e63d8",
+        "type": "ui_gauge",
+        "z": "fc2f145.e9c1de8",
+        "name": "",
+        "group": "f87ec158.d281b",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Objtemp-guage",
+        "label": "Degrees(Centigrade)",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#c70a0a"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 760,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "c040dcf4.a7205",
+        "type": "inject",
+        "z": "fc2f145.e9c1de8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "35c446fe.5a3cca",
+        "type": "ibmiot out",
+        "z": "fc2f145.e9c1de8",
+        "authentication": "apiKey",
+        "apiKey": "5c4c4b8.72c3eb4",
+        "outputType": "cmd",
+        "deviceId": "ARDUINO",
+        "deviceType": "IOT-device",
+        "eventCommandType": "command",
+        "format": "json",
+        "data": "data",
+        "qos": 0,
+        "name": "IBM IoT",
+        "service": "registered",
+        "x": 680,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "b472779e.58f858",
+        "type": "ui_button",
+        "z": "fc2f145.e9c1de8",
+        "name": "",
+        "group": "afbcf18d.49a05",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "MOTOR ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"command\":\"motoron\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 300,
+        "y": 520,
+        "wires": [
+            [
+                "35c446fe.5a3cca",
+                "4eff064e.d4af98"
+            ]
+        ]
+    },
+    {
+        "id": "6db67d32.8e1324",
+        "type": "ui_button",
+        "z": "fc2f145.e9c1de8",
+        "name": "",
+        "group": "afbcf18d.49a05",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "MOTOR OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"command\":\"motoroff\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 310,
+        "y": 640,
+        "wires": [
+            [
+                "35c446fe.5a3cca",
+                "4eff064e.d4af98"
+            ]
+        ]
+    },
+    {
+        "id": "f0632a6.531ecd8",
+        "type": "ibmiot",
+        "z": "",
+        "name": "",
+        "keepalive": "60",
+        "serverName": "",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "24578341.e00e5c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Smart Agiculture-Temp",
+        "tab": "bdcaac0b.cbca",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "7ba5a8a0.c65008",
+        "type": "ui_group",
+        "z": "",
+        "name": "Smart Agriculture-Humidity ",
+        "tab": "bdcaac0b.cbca",
+        "order": 7,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "f87ec158.d281b",
+        "type": "ui_group",
+        "z": "",
+        "name": "Smart Agriculture-ObjTemp",
+        "tab": "bdcaac0b.cbca",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "5c4c4b8.72c3eb4",
+        "type": "ibmiot",
+        "z": "",
+        "name": "",
+        "keepalive": "60",
+        "serverName": "",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "afbcf18d.49a05",
+        "type": "ui_group",
+        "z": "",
+        "name": "MOTOR COMMANDS",
+        "tab": "bdcaac0b.cbca",
+        "order": 6,
+        "disp": true,
+        "width": "4",
+        "collapse": false
+    },
+    {
+        "id": "bdcaac0b.cbca",
+        "type": "ui_tab",
+        "z": "",
+        "name": "IOT",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
