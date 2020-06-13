@@ -5,5 +5,4 @@ This Project is a software based project which involves development of Web Appli
 It also includeswriting a Python code inorder to configure the devices using web application which has been already created.It is necessary to download Ibmiotf package so that it can connect to the device and we can run the code easily.
 
 #Project demonstration Video link:
-
 https://drive.google.com/file/d/189-srHCpg8AMCB3XjZOjGgGW3oVK8NZ7/view?usp=sharing
